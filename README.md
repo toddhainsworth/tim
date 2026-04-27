@@ -12,7 +12,11 @@ A minimal NeoVim 0.12.1 config focused on TypeScript/JavaScript, Markdown, and Y
 | ripgrep | Telescope live grep | `brew install ripgrep` |
 | JetBrains Mono Nerd Font | icons | `brew install --cask font-jetbrains-mono-nerd-font` |
 
-Set JetBrains Mono Nerd Font in your terminal emulator — tmux will inherit it.
+After installing, set JetBrains Mono Nerd Font as the font in your terminal emulator — tmux will inherit it automatically. Without this step, icons in neo-tree and Telescope will render as `?` boxes.
+
+- **iTerm2**: Preferences → Profiles → Text → Font
+- **Kitty**: `font_family JetBrainsMono Nerd Font` in `~/.config/kitty/kitty.conf`
+- **Alacritty**: `family: JetBrainsMono Nerd Font` under `fonts.normal`
 
 ## Installation
 
