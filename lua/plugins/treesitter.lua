@@ -2,10 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    -- lua, vim, vimdoc are bundled with NeoVim 0.12 — don't reinstall them
-    build = function()
-      require("nvim-treesitter").install({ "typescript", "javascript", "yaml", "markdown", "markdown_inline" })
-    end,
+    build = ":TSInstall typescript javascript yaml markdown markdown_inline",
     config = function()
       vim.api.nvim_create_autocmd("FileType", {
         callback = function()
