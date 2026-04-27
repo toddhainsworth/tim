@@ -2,10 +2,11 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    build = ":TSInstall typescript tsx javascript yaml markdown markdown_inline lua vim vimdoc",
+    -- lua, vim, vimdoc are bundled with NeoVim 0.12 — don't reinstall them
+    build = function()
+      require("nvim-treesitter").install({ "typescript", "javascript", "yaml", "markdown", "markdown_inline" })
+    end,
     config = function()
-      -- Treesitter highlighting is enabled automatically in 0.12 when a parser
-      -- is available, but this ensures it for all filetypes.
       vim.api.nvim_create_autocmd("FileType", {
         callback = function()
           pcall(vim.treesitter.start)
