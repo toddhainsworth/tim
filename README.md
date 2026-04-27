@@ -37,22 +37,39 @@ Verify they attached with `:LspInfo`.
 
 Leader key is `\`.
 
-### Navigation
+### Editor
 
 | Key | Action |
 |---|---|
-| `\\` | Find files (Telescope) |
-| `\ff` | Find files (Telescope) |
-| `\fg` | Live grep |
-| `\fb` | Buffers |
-| `\fr` | Recent files |
-| `\e` | Toggle file tree |
-| `\fs` | File symbols (aerial) |
-| `]b` / `[b` | Next / prev buffer |
+| `\n` | Clear search highlight |
+
+### Windows
+
+| Key | Action |
+|---|---|
 | `\ww` | Move to split above |
 | `\ws` | Move to split below |
 | `\wq` | Move to split left |
 | `\we` | Move to split right |
+
+### Buffers
+
+| Key | Action |
+|---|---|
+| `]b` / `[b` | Next / prev buffer |
+
+### Quickfix
+
+| Key | Action |
+|---|---|
+| `]q` / `[q` | Next / prev item |
+
+### Diagnostics
+
+| Key | Action |
+|---|---|
+| `gl` | Diagnostic float popup |
+| `]d` / `[d` | Next / prev diagnostic |
 
 ### LSP
 
@@ -66,9 +83,18 @@ Leader key is `\`.
 | `\rn` | Rename symbol |
 | `\ca` | Code action |
 | `\f` | Format buffer (manual) |
-| `gl` | Diagnostic float popup |
-| `]d` / `[d` | Next / prev diagnostic |
-| `]q` / `[q` | Next / prev quickfix |
+
+### Files
+
+| Key | Action |
+|---|---|
+| `\\` | Find files (Telescope) |
+| `\ff` | Find files (Telescope) |
+| `\fg` | Live grep |
+| `\fb` | Buffers |
+| `\fr` | Recent files |
+| `\fs` | File symbols (aerial) |
+| `\e` | Toggle file tree |
 
 ### Git
 
@@ -84,7 +110,6 @@ Leader key is `\`.
 |---|---|
 | `gcc` | Toggle line comment (normal) |
 | `gc` | Toggle comment (visual selection) |
-| `\n` | Clear search highlight |
 
 ### Treesitter text objects
 
