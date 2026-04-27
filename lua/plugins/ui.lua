@@ -39,6 +39,22 @@ return {
       { "<leader>e", "<cmd>Neotree toggle<cr>" },
     },
     opts = {
+      sources = { "filesystem", "git_status" },
+      default_component_configs = {
+        git_status = {
+          symbols = {
+            added     = "",
+            modified  = "",
+            deleted   = "✖",
+            renamed   = "󰁕",
+            untracked = "",
+            ignored   = "",
+            unstaged  = "󰄱",
+            staged    = "",
+            conflict  = "",
+          },
+        },
+      },
       filesystem = {
         follow_current_file = { enabled = true },
         hide_dotfiles = false,
