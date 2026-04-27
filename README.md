@@ -71,7 +71,7 @@ Leader key is `\`.
 
 | Key | Action |
 |---|---|
-| `\gg` | Open Neogit |
+| `\ng` | Open Neogit |
 | `\gd` | Open Diffview |
 | `\gD` | Close Diffview |
 
