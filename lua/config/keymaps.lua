@@ -1,5 +1,8 @@
 local map = vim.keymap.set
 
+-- Go back to normal mode
+map("i", "jj", "<Esc>")
+
 -- Editor
 map("n", "<leader>n", "<cmd>nohlsearch<CR>")
 
