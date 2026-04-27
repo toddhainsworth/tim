@@ -47,6 +47,8 @@ Leader key is `\`.
 | `\fb` | Buffers |
 | `\fr` | Recent files |
 | `\e` | Toggle file tree |
+| `\fs` | File symbols (aerial) |
+| `]b` / `[b` | Next / prev buffer |
 | `\ww` | Move to split above |
 | `\ws` | Move to split below |
 | `\wq` | Move to split left |
@@ -66,6 +68,7 @@ Leader key is `\`.
 | `\f` | Format buffer (manual) |
 | `gl` | Diagnostic float popup |
 | `]d` / `[d` | Next / prev diagnostic |
+| `]q` / `[q` | Next / prev quickfix |
 
 ### Git
 
@@ -112,3 +115,5 @@ Leader key is `\`.
 | [neogit](https://github.com/NeogitOrg/neogit) | Git UI (Magit-style) |
 | [diffview.nvim](https://github.com/sindrets/diffview.nvim) | Diff viewer |
 | [nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Auto bracket / quote closing |
+| [nvim-surround](https://github.com/kylechui/nvim-surround) | Surround operations (`ys`, `cs`, `ds`) |
+| [aerial.nvim](https://github.com/stevearc/aerial.nvim) | Symbol outline via Telescope |

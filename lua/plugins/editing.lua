@@ -4,4 +4,10 @@ return {
     event = "InsertEnter",
     opts = {},
   },
+
+  {
+    "kylechui/nvim-surround",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
