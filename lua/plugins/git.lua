@@ -1,5 +1,13 @@
 return {
   {
+    "FabijanZulj/blame.nvim",
+    keys = {
+      { "<leader>gb", "<cmd>BlameToggle window<cr>" },
+    },
+    opts = {},
+  },
+
+  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",

@@ -105,6 +105,7 @@ Leader key is `\`.
 | Key | Action |
 |---|---|
 | `\ng` | Open Neogit |
+| `\gb` | Toggle git blame sidebar |
 | `\gd` | Open Diffview |
 | `\gD` | Close Diffview |
 
@@ -141,6 +142,7 @@ Leader key is `\`.
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP server definitions |
 | [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) | Bridges Mason and lspconfig |
 | [blink.cmp](https://github.com/saghen/blink.cmp) | Autocompletion |
+| [blame.nvim](https://github.com/FabijanZulj/blame.nvim) | Toggleable git blame sidebar |
 | [neogit](https://github.com/NeogitOrg/neogit) | Git UI (Magit-style) |
 | [diffview.nvim](https://github.com/sindrets/diffview.nvim) | Diff viewer |
 | [nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Auto bracket / quote closing |
