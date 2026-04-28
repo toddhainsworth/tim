@@ -5,6 +5,8 @@ map("i", "jj", "<Esc>")
 
 -- Editor
 map("n", "<leader>n", "<cmd>nohlsearch<CR>")
+map("n", "B", "^")
+map("n", "E", "$")
 
 -- Windows
 map("n", "<leader>wq", "<C-w>h")
