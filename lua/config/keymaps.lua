@@ -24,5 +24,3 @@ map("n", "[q", "<cmd>cprev<cr>")
 
 -- Diagnostics
 map("n", "gl", vim.diagnostic.open_float)
-map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end)
-map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end)
