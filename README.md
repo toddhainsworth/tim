@@ -1,4 +1,6 @@
-# tim (Todd's (Neo)Vim)
+<p align="center">
+  <img src="logo.svg" alt="tim — Todd's (Neo)Vim" width="460"/>
+</p>
 
 A minimal NeoVim 0.12.1 config focused on TypeScript/JavaScript, Markdown, and YAML.
 
