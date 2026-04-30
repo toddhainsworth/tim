@@ -17,7 +17,7 @@ opt.hlsearch = true
 
 -- Appearance
 opt.termguicolors = true
-opt.signcolumn = "yes"
+opt.signcolumn = "auto"
 opt.cursorline = true
 opt.wrap = false
 opt.scrolloff = 8

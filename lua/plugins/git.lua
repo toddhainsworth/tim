@@ -24,6 +24,8 @@ return {
     keys = {
       { "<leader>gd", "<cmd>DiffviewOpen<cr>" },
       { "<leader>gD", "<cmd>DiffviewClose<cr>" },
+      { "<leader>gr", "<cmd>DiffviewOpen origin/main...HEAD<cr>" },
+      { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>" },
     },
     opts = {},
   },
