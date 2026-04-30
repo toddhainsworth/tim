@@ -143,9 +143,9 @@ Leader key is `\`.
 | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | Fuzzy finder |
 | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Parser management (main branch) |
 | [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) | Text objects and motions (main branch) |
-| [mason.nvim](https://github.com/williamboman/mason.nvim) | LSP server binary management |
+| [mason.nvim](https://github.com/mason-org/mason.nvim) | LSP server binary management |
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP server definitions |
-| [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) | Bridges Mason and lspconfig |
+| [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) | Bridges Mason and lspconfig |
 | [blink.cmp](https://github.com/saghen/blink.cmp) | Autocompletion |
 | [blame.nvim](https://github.com/FabijanZulj/blame.nvim) | Toggleable git blame sidebar |
 | [neogit](https://github.com/NeogitOrg/neogit) | Git UI (Magit-style) |
