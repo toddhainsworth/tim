@@ -1,9 +1,9 @@
 return {
-  { "williamboman/mason.nvim", opts = {} },
+  { "mason-org/mason.nvim", opts = {} },
 
   {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = { "mason-org/mason.nvim" },
     opts = {
       ensure_installed = { "ts_ls", "yamlls", "marksman" },
       -- Only auto-enable servers we explicitly manage
@@ -13,7 +13,7 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
+    dependencies = { "mason-org/mason-lspconfig.nvim" },
     config = function()
       vim.diagnostic.config({
         underline = true,
