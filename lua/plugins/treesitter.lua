@@ -2,8 +2,16 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    build = ":TSInstall typescript javascript yaml markdown markdown_inline",
+    build = ":TSUpdate",
     config = function()
+      require("nvim-treesitter").install({
+        "typescript",
+        "javascript",
+        "yaml",
+        "markdown",
+        "markdown_inline",
+      })
+
       vim.api.nvim_create_autocmd("FileType", {
         callback = function()
           pcall(vim.treesitter.start)

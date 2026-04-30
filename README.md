@@ -46,6 +46,8 @@ Leader key is `\`.
 | Key | Action |
 |---|---|
 | `\n` | Clear search highlight |
+| `B` / `E` | Jump to line start / end (normal mode) |
+| `jj` | Exit insert mode |
 
 ### Windows
 
@@ -73,7 +75,8 @@ Leader key is `\`.
 | Key | Action |
 |---|---|
 | `gl` | Diagnostic float popup |
-| `]d` / `[d` | Next / prev diagnostic |
+| `]d` / `[d` | Next / prev diagnostic (via Trouble) |
+| `\xx` | Toggle buffer diagnostics panel (Trouble) |
 
 ### LSP
 
@@ -108,6 +111,8 @@ Leader key is `\`.
 | `\gb` | Toggle git blame sidebar |
 | `\gd` | Open Diffview |
 | `\gD` | Close Diffview |
+| `\gr` | Review branch (diff vs `origin/main`) |
+| `\gh` | File history for current buffer |
 
 ### Editing
 
@@ -145,6 +150,7 @@ Leader key is `\`.
 | [blame.nvim](https://github.com/FabijanZulj/blame.nvim) | Toggleable git blame sidebar |
 | [neogit](https://github.com/NeogitOrg/neogit) | Git UI (Magit-style) |
 | [diffview.nvim](https://github.com/sindrets/diffview.nvim) | Diff viewer |
+| [trouble.nvim](https://github.com/folke/trouble.nvim) | Diagnostics / quickfix panel |
 | [nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Auto bracket / quote closing |
 | [nvim-surround](https://github.com/kylechui/nvim-surround) | Surround operations (`ys`, `cs`, `ds`) |
 | [aerial.nvim](https://github.com/stevearc/aerial.nvim) | Symbol outline via Telescope |

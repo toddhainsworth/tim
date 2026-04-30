@@ -15,8 +15,6 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = { "williamboman/mason-lspconfig.nvim" },
     config = function()
-      vim.lsp.enable({ "ts_ls", "yamlls", "marksman" })
-
       vim.diagnostic.config({
         underline = true,
         virtual_text = false,
