@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="80" viewBox="0 0 460 80" role="img" aria-label="tim — Todd's (Neo)Vim">
+  <defs>
+    <clipPath id="c">
+      <rect width="460" height="80" rx="6"/>
+    </clipPath>
+  </defs>
+
+  <rect width="460" height="80" rx="6" fill="#151515"/>
+  <rect width="3" height="80" fill="#7E97AB" clip-path="url(#c)"/>
+
+  <text x="20" y="50"
+    font-family="'JetBrains Mono', Menlo, 'Cascadia Mono', monospace"
+    font-size="40" font-weight="700" fill="#E1E1E1">tim</text>
+
+  <rect x="92" y="22" width="24" height="30" fill="#7E97AB" rx="1">
+    <animate attributeName="opacity"
+      values="1;1;0;0" keyTimes="0;0.4999;0.5;1"
+      dur="1.2s" repeatCount="indefinite"/>
+  </rect>
+
+  <text x="20" y="68"
+    font-family="'JetBrains Mono', Menlo, 'Cascadia Mono', monospace"
+    font-size="13" fill="#727272">Todd's (Neo)Vim</text>
+</svg>
