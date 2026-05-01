@@ -44,16 +44,16 @@ end
 
 local commands = {}
 
-commands.Version = function()
+commands.version = function()
   local v = require("tim.git").current_version()
   vim.notify(v and ("[tim] " .. v) or "[tim] no version installed", vim.log.levels.INFO)
 end
 
-commands.Check = function()
+commands.check = function()
   check_for_update(true)
 end
 
-commands.Update = function()
+commands.update = function()
   local git = require("tim.git")
   local current = git.current_version()
 
@@ -84,7 +84,7 @@ commands.Update = function()
   )
 end
 
-commands.Versions = function()
+commands.versions = function()
   local git = require("tim.git")
   async_fetch(function()
     local versions = git.list_versions()
@@ -122,7 +122,7 @@ commands.Versions = function()
   end)
 end
 
-commands.Changelog = function()
+commands.changelog = function()
   async_fetch(function()
     local sections = require("tim.git").full_changelog()
     if #sections == 0 then
@@ -135,7 +135,7 @@ end
 
 function M.setup()
   vim.api.nvim_create_user_command("Tim", function(opts)
-    local sub = opts.args
+    local sub = opts.args:lower()
     if commands[sub] then
       commands[sub]()
     else
