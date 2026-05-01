@@ -31,7 +31,7 @@ function M.show_changelog(sections)
     focusable = true,
     border = {
       style = "rounded",
-      text = { top = " Changelog ", top_align = "center" },
+      text = { top = " changelog ", top_align = "center" },
     },
     position = "50%",
     size = size,
@@ -81,7 +81,7 @@ function M.show_versions(versions, on_select)
     },
     border = {
       style = "rounded",
-      text = { top = " Versions ", top_align = "center" },
+      text = { top = " versions ", top_align = "center" },
     },
   }, {
     lines = items,

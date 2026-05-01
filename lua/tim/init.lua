@@ -87,7 +87,7 @@ end
 commands.versions = function()
   local git = require("tim.git")
   local ui = require("tim.ui")
-  local loading = ui.show_loading("Versions")
+  local loading = ui.show_loading("versions")
   async_fetch(function()
     loading:unmount()
     local versions = git.list_versions()
@@ -127,7 +127,7 @@ end
 
 commands.changelog = function()
   local ui = require("tim.ui")
-  local loading = ui.show_loading("Changelog")
+  local loading = ui.show_loading("changelog")
   async_fetch(function()
     loading:unmount()
     local sections = require("tim.git").full_changelog()
