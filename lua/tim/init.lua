@@ -126,13 +126,16 @@ commands.versions = function()
 end
 
 commands.changelog = function()
+  local ui = require("tim.ui")
+  local loading = ui.show_loading("Changelog")
   async_fetch(function()
+    loading:unmount()
     local sections = require("tim.git").full_changelog()
     if #sections == 0 then
       vim.notify("[tim] no changelog available", vim.log.levels.WARN)
       return
     end
-    require("tim.ui").show_changelog(sections)
+    ui.show_changelog(sections)
   end)
 end
 
