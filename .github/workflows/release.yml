@@ -1,0 +1,75 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (e.g. v1.2.0)'
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate version format
+        run: |
+          if ! echo "${{ github.event.inputs.version }}" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "Error: Invalid version format '${{ github.event.inputs.version }}'. Expected: vMAJOR.MINOR.PATCH"
+            exit 1
+          fi
+
+      - name: Validate version ordering
+        run: |
+          LATEST=$(git tag --list --sort=-version:refname 'v*' | head -1)
+          if [ -z "$LATEST" ]; then
+            echo "No existing tags found, proceeding with first release"
+            exit 0
+          fi
+          echo "Latest tag: $LATEST"
+          NEW="${{ github.event.inputs.version }}"
+          if [ "$LATEST" = "$NEW" ]; then
+            echo "Error: Version $NEW already exists"
+            exit 1
+          fi
+          HIGHER=$(printf '%s\n%s' "$LATEST" "$NEW" | sort -V | tail -1)
+          if [ "$HIGHER" != "$NEW" ]; then
+            echo "Error: Version $NEW is not greater than latest tag $LATEST"
+            exit 1
+          fi
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          LATEST=$(git tag --list --sort=-version:refname 'v*' | head -1)
+          if [ -z "$LATEST" ]; then
+            NOTES=$(git log --oneline)
+          else
+            NOTES=$(git log "${LATEST}..HEAD" --oneline)
+          fi
+          if [ -z "$NOTES" ]; then
+            NOTES="No changes since last release"
+          fi
+          {
+            echo "notes<<EOF"
+            echo "$NOTES"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create tag and release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "${{ github.event.inputs.version }}"
+          git push origin "${{ github.event.inputs.version }}"
+          gh release create "${{ github.event.inputs.version }}" \
+            --title "${{ github.event.inputs.version }}" \
+            --notes "${{ steps.changelog.outputs.notes }}"
