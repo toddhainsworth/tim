@@ -23,7 +23,3 @@ These were deliberately excluded:
 Releases are cut from `main` by manually triggering the GitHub Actions release workflow. There are no release branches — `main` is always the source of truth. The workflow tags `main` and creates a GitHub Release.
 
 To trigger a release: `gh workflow run release.yml -f version=v1.2.0`
-
-## LSP
-
-Use `vim.lsp.enable()` (NeoVim 0.12 native API). Never the legacy `require('lspconfig').server.setup()` pattern.
