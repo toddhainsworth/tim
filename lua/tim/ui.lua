@@ -46,6 +46,24 @@ function M.show_changelog(sections)
   vim.keymap.set("n", "q", function() popup:unmount() end, { buffer = popup.bufnr, silent = true })
 end
 
+function M.show_loading(title)
+  local Popup = require("nui.popup")
+  local popup = Popup({
+    enter = false,
+    focusable = false,
+    border = {
+      style = "rounded",
+      text = { top = " " .. title .. " ", top_align = "center" },
+    },
+    position = "50%",
+    size = { width = 20, height = 1 },
+  })
+  popup:mount()
+  vim.api.nvim_buf_set_lines(popup.bufnr, 0, -1, false, { "  Loading..." })
+  vim.bo[popup.bufnr].modifiable = false
+  return popup
+end
+
 function M.show_versions(versions, on_select)
   local Menu = require("nui.menu")
   local event = require("nui.utils.autocmd").event
