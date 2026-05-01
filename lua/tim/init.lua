@@ -86,13 +86,16 @@ end
 
 commands.versions = function()
   local git = require("tim.git")
+  local ui = require("tim.ui")
+  local loading = ui.show_loading("Versions")
   async_fetch(function()
+    loading:unmount()
     local versions = git.list_versions()
     if #versions == 0 then
       vim.notify("[tim] no versions available", vim.log.levels.WARN)
       return
     end
-    require("tim.ui").show_versions(versions, function(selected)
+    ui.show_versions(versions, function(selected)
       local current = git.current_version()
       if selected == current then
         vim.notify(string.format("[tim] already on %s", selected), vim.log.levels.INFO)
