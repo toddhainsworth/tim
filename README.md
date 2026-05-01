@@ -39,6 +39,20 @@ npm install -g tree-sitter-cli
 Mason will auto-install the LSP servers (`ts_ls`, `yamlls`, `marksman`) on first launch.
 Verify they attached with `:LspInfo`.
 
+## Update management
+
+Tim manages its own updates via the `:Tim` command. On startup it silently checks for a new version once every 24 hours and notifies you if one is available.
+
+| Command | Description |
+|---|---|
+| `:Tim version` | Show the currently installed version |
+| `:Tim check` | Manually check for an available update |
+| `:Tim update` | Pull the latest `main` and display a changelog if the version changed |
+| `:Tim versions` | Browse all tagged versions and checkout a specific one |
+| `:Tim changelog` | View the full changelog across all releases |
+
+Checking out an older version with `:Tim versions` leaves the repo in detached HEAD state — run `:Tim update` to return to the latest release.
+
 ## Keybindings
 
 Leader key is `\`.
