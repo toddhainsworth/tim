@@ -36,8 +36,21 @@ Install the tree-sitter CLI (required for parser compilation):
 npm install -g tree-sitter-cli
 ```
 
-Mason will auto-install the LSP servers (`ts_ls`, `yamlls`, `marksman`) on first launch.
-Verify they attached with `:LspInfo`.
+Mason will auto-install the base LSP servers (`ts_ls`, `yamlls`, `marksman`) on first launch.
+Machine-specific servers (e.g. `intelephense`) are loaded from `lua/config/servers_local.lua` — see [Machine-specific servers](#machine-specific-servers).
+Verify servers attached with `:LspInfo`.
+
+## Machine-specific servers
+
+Base servers (`ts_ls`, `yamlls`, `marksman`) are defined in `lua/config/servers.lua` and installed on every machine.
+
+To add servers for a specific machine, create `lua/config/servers_local.lua` (gitignored — not committed):
+
+```lua
+return { "intelephense" }
+```
+
+Mason will merge this list with the base on next startup. If the file is absent the base servers are used as-is. To add `intelephense` on the work laptop, create that file with the content above and restart Neovim.
 
 ## Update management
 

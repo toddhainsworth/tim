@@ -4,11 +4,16 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     dependencies = { "mason-org/mason.nvim" },
-    opts = {
-      ensure_installed = { "ts_ls", "yamlls", "marksman" },
-      -- Only auto-enable servers we explicitly manage
-      automatic_enable = { "ts_ls", "yamlls", "marksman" },
-    },
+    opts = function()
+      local base = require("config.servers")
+      local ok, extra = pcall(require, "config.servers_local")
+      local servers = ok and vim.list_extend(vim.deepcopy(base), extra) or base
+      return {
+        ensure_installed = servers,
+        -- Only auto-enable servers we explicitly manage
+        automatic_enable = servers,
+      }
+    end,
   },
 
   {
