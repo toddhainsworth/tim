@@ -31,9 +31,10 @@ local function check_for_update(notify_if_current)
     touch_state_file()
     local current = git.current_version()
     local latest = git.latest_version()
+    require("tim.ui").set_update_status(current, latest)
     if current and latest and current ~= latest then
       vim.notify(
-        string.format("[tim] %s is available — run :Tim Update to install", latest),
+        string.format("[tim] %s is available — run :Tim update to install", latest),
         vim.log.levels.INFO
       )
     elseif notify_if_current then
@@ -56,7 +57,7 @@ commands.check = function()
   check_for_update(true)
 end
 
-commands.update = function()
+function M.run_update()
   vim.notify("[tim] updating...", vim.log.levels.INFO)
   local git = require("tim.git")
   local current = git.current_version()
@@ -80,79 +81,46 @@ commands.update = function()
           vim.log.levels.INFO
         )
         local commits = current and git.changelog_between(current, latest) or {}
+        local ui = require("tim.ui")
         if #commits > 0 then
-          require("tim.ui").show_changelog({ { tag = latest, commits = commits } })
+          ui.set_sections({ { tag = latest, commits = commits } })
+          ui.open("changelog")
         end
       end)
     end)
   )
 end
 
+commands.update = function()
+  M.run_update()
+end
+
 commands.versions = function()
-  local git = require("tim.git")
-  local ui = require("tim.ui")
-  local loading = ui.show_loading("versions")
-  async_fetch(function()
-    loading:unmount()
-    local versions = git.list_versions()
-    if #versions == 0 then
-      vim.notify("[tim] no versions available", vim.log.levels.WARN)
-      return
-    end
-    ui.show_versions(versions, function(selected)
-      local current = git.current_version()
-      if selected == current then
-        vim.notify(string.format("[tim] already on %s", selected), vim.log.levels.INFO)
-        return
-      end
-      local choice = vim.fn.confirm(
-        string.format("Checkout %s? This will leave you in detached HEAD state.", selected),
-        "&Yes\n&No",
-        2
-      )
-      if choice ~= 1 then return end
-      vim.system(
-        { "git", "-C", vim.fn.stdpath("config"), "checkout", selected },
-        { text = true },
-        vim.schedule_wrap(function(result)
-          if result.code ~= 0 then
-            vim.notify("[tim] checkout failed:\n" .. (result.stderr or ""), vim.log.levels.ERROR)
-            return
-          end
-          vim.notify(
-            string.format("[tim] checked out %s — restart Neovim to apply", selected),
-            vim.log.levels.INFO
-          )
-        end)
-      )
-    end)
-  end)
+  require("tim.ui").open("versions")
 end
 
 commands.changelog = function()
-  local ui = require("tim.ui")
-  local loading = ui.show_loading("changelog")
-  async_fetch(function()
-    local sections = require("tim.git").full_changelog()
-    loading:unmount()
-    if #sections == 0 then
-      vim.notify("[tim] no changelog available", vim.log.levels.WARN)
-      return
-    end
-    ui.show_changelog(sections)
-  end)
+  require("tim.ui").open("changelog")
 end
 
 function M.setup()
   vim.api.nvim_create_user_command("Tim", function(opts)
     local sub = opts.args:lower()
+    if sub == "" then
+      local git = require("tim.git")
+      local ui = require("tim.ui")
+      local current = git.current_version()
+      ui.set_update_status(current, git.latest_version())
+      ui.open("home")
+      return
+    end
     if commands[sub] then
       commands[sub]()
     else
       vim.notify("[tim] unknown subcommand: " .. sub, vim.log.levels.ERROR)
     end
   end, {
-    nargs = 1,
+    nargs = "?",
     complete = function()
       local keys = vim.tbl_keys(commands)
       table.sort(keys)
