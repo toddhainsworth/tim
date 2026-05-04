@@ -62,13 +62,47 @@ Mason will merge this list with the base on next startup. If the file is absent 
 
 Tim manages its own updates via the `:Tim` command. On startup it silently checks for a new version once every 24 hours and notifies you if one is available.
 
+Running `:Tim` (no args) opens a unified floating window with four tabs:
+
+| Tab | Hotkey | Content |
+|---|---|---|
+| Home | `H` | Current version, update status |
+| Versions | `V` | All tagged versions — navigate and checkout |
+| Changelog | `C` | Full commit history by release |
+| Help | `?` | Keybinding reference |
+
+**Window navigation:**
+
+| Key | Action |
+|---|---|
+| `<Tab>` / `<S-Tab>` | Next / prev tab |
+| `H` / `V` / `C` / `?` | Jump to tab directly |
+| `q` / `<Esc>` | Close |
+
+**Versions tab:**
+
+| Key | Action |
+|---|---|
+| `j` / `k` | Navigate versions |
+| `<CR>` | Checkout selected version |
+
+**Home tab:**
+
+| Key | Action |
+|---|---|
+| `<CR>` | Open Versions tab |
+| `u` | Run update |
+
+All subcommands also work directly and open the UI on the relevant tab:
+
 | Command | Description |
 |---|---|
-| `:Tim version` | Show the currently installed version |
-| `:Tim check` | Manually check for an available update |
-| `:Tim update` | Pull the latest `main` and display a changelog if the version changed |
-| `:Tim versions` | Browse all tagged versions and checkout a specific one |
-| `:Tim changelog` | View the full changelog across all releases |
+| `:Tim` | Open the Tim UI on the Home tab |
+| `:Tim version` | Show the currently installed version (notify only) |
+| `:Tim check` | Manually check for an available update (notify only) |
+| `:Tim update` | Pull the latest `main` and open Changelog if the version changed |
+| `:Tim versions` | Open the UI on the Versions tab |
+| `:Tim changelog` | Open the UI on the Changelog tab |
 
 Checking out an older version with `:Tim versions` leaves the repo in detached HEAD state — run `:Tim update` to return to the latest release.
 
@@ -178,6 +212,7 @@ Leader key is `\`.
 |---|---|
 | [lazy.nvim](https://github.com/folke/lazy.nvim) | Plugin manager |
 | [no-clown-fiesta.nvim](https://github.com/aktersnurra/no-clown-fiesta.nvim) | Colorscheme |
+| [nui.nvim](https://github.com/MunifTanjim/nui.nvim) | UI component library (used by Tim) |
 | [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | Statusline |
 | [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) | File tree sidebar |
 | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | Fuzzy finder |
