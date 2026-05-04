@@ -23,6 +23,9 @@ local function async_fetch(callback)
 end
 
 local function check_for_update(notify_if_current)
+  if notify_if_current then
+    vim.notify("[tim] checking for updates...", vim.log.levels.INFO)
+  end
   local git = require("tim.git")
   async_fetch(function()
     touch_state_file()
@@ -54,6 +57,7 @@ commands.check = function()
 end
 
 commands.update = function()
+  vim.notify("[tim] updating...", vim.log.levels.INFO)
   local git = require("tim.git")
   local current = git.current_version()
 
@@ -129,8 +133,8 @@ commands.changelog = function()
   local ui = require("tim.ui")
   local loading = ui.show_loading("changelog")
   async_fetch(function()
-    loading:unmount()
     local sections = require("tim.git").full_changelog()
+    loading:unmount()
     if #sections == 0 then
       vim.notify("[tim] no changelog available", vim.log.levels.WARN)
       return
@@ -150,7 +154,9 @@ function M.setup()
   end, {
     nargs = 1,
     complete = function()
-      return vim.tbl_keys(commands)
+      local keys = vim.tbl_keys(commands)
+      table.sort(keys)
+      return keys
     end,
   })
 
