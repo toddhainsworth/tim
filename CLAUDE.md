@@ -12,7 +12,6 @@
 These were deliberately excluded:
 
 - **conform.nvim / nvim-lint** — formatting and linting are run manually
-- **gitsigns.nvim** — no inline blame or hunk signs wanted
 - **which-key.nvim** — keybindings are memorised
 - **LuaSnip / friendly-snippets** — no custom snippets needed
 - **Any terminal plugin** — tmux handles this

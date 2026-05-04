@@ -148,6 +148,11 @@ Leader key is `\`.
 | `\gD` | Close Diffview |
 | `\gr` | Review branch (diff vs `origin/main`) |
 | `\gh` | File history for current buffer |
+| `]h` / `[h` | Next / prev hunk |
+| `\gp` | Preview hunk |
+| `\gs` | Stage hunk |
+| `\gu` | Undo stage hunk |
+| `\gx` | Reset hunk |
 
 ### Editing
 
@@ -182,6 +187,7 @@ Leader key is `\`.
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP server definitions |
 | [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim) | Bridges Mason and lspconfig |
 | [blink.cmp](https://github.com/saghen/blink.cmp) | Autocompletion |
+| [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Gutter diff indicators and hunk operations |
 | [blame.nvim](https://github.com/FabijanZulj/blame.nvim) | Toggleable git blame sidebar |
 | [neogit](https://github.com/NeogitOrg/neogit) | Git UI (Magit-style) |
 | [diffview.nvim](https://github.com/sindrets/diffview.nvim) | Diff viewer |
