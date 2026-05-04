@@ -36,6 +36,12 @@ Install the tree-sitter CLI (required for parser compilation):
 npm install -g tree-sitter-cli
 ```
 
+If you see `ENOENT` errors when nvim-treesitter installs parsers, the post-install binary download was skipped. Fix it by running the install script manually:
+
+```bash
+cd $(npm root -g)/tree-sitter-cli && node install.js
+```
+
 Mason will auto-install the base LSP servers (`ts_ls`, `yamlls`, `marksman`) on first launch.
 Machine-specific servers (e.g. `intelephense`) are loaded from `lua/config/servers_local.lua` — see [Machine-specific servers](#machine-specific-servers).
 Verify servers attached with `:LspInfo`.
