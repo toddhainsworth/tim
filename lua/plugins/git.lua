@@ -35,7 +35,6 @@ return {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
     },
     keys = {
       { "<leader>ng", "<cmd>Neogit<cr>" },

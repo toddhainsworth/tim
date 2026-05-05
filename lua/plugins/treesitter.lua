@@ -13,6 +13,7 @@ return {
       })
 
       vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact", "yaml", "markdown" },
         callback = function()
           pcall(vim.treesitter.start)
         end,

@@ -17,7 +17,7 @@ opt.hlsearch = true
 
 -- Appearance
 opt.termguicolors = true
-opt.signcolumn = "auto"
+opt.signcolumn = "yes:1"
 opt.cursorline = true
 opt.wrap = false
 opt.scrolloff = 8
@@ -25,6 +25,5 @@ opt.scrolloff = 8
 -- Behaviour
 opt.splitbelow = true
 opt.splitright = true
-opt.clipboard = "unnamedplus"
 opt.undofile = true
 opt.updatetime = 250
