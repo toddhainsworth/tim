@@ -17,6 +17,10 @@ These were deliberately excluded:
 - **Any terminal plugin** — tmux handles this
 - **mini.nvim** — not adopted
 
+## Plugin recommendations
+
+Before recommending a third-party plugin, check whether NeoVim core already provides the functionality. Check the NeoVim changelog, runtime pack directory, and `neovim.io/doc` for built-in alternatives first.
+
 ## Releases
 
 Releases are cut from `main` by manually triggering the GitHub Actions release workflow. There are no release branches — `main` is always the source of truth. The workflow tags `main` and creates a GitHub Release.
