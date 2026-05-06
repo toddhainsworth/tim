@@ -1,1 +1,1 @@
-return { "ts_ls", "yamlls", "marksman" }
+return { "ts_ls", "yamlls", "marksman", "jsonls" }

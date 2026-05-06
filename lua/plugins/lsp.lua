@@ -43,7 +43,7 @@ return {
           map("K", vim.lsp.buf.hover)
           map("<leader>rn", vim.lsp.buf.rename)
           map("<leader>ca", vim.lsp.buf.code_action)
-          map("<leader>f", function() vim.lsp.buf.format({ async = true }) end)
+          map("<leader>lf", function() vim.lsp.buf.format({ async = true }) end)
         end,
       })
     end,
