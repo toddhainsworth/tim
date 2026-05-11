@@ -4,15 +4,13 @@ return {
     branch = "main",
     build = ":TSUpdate",
     config = function()
+      -- lua, markdown, markdown_inline are bundled with NeoVim 0.10+
       require("nvim-treesitter").install({
         "typescript",
         "typescriptreact",
         "javascript",
         "javascriptreact",
         "yaml",
-        "markdown",
-        "markdown_inline",
-        "lua",
         "json",
       })
 
