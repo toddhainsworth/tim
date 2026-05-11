@@ -7,6 +7,10 @@
 - Treesitter text objects are heavily used — don't remove or break them
 - No in-editor terminal — Todd uses tmux
 
+## Keybindings
+
+- Window navigation uses `<leader>w{q,s,w,e}` for left/down/up/right — this is intentional, not a mistake
+
 ## Do not suggest
 
 These were deliberately excluded:
@@ -16,6 +20,8 @@ These were deliberately excluded:
 - **LuaSnip / friendly-snippets** — no custom snippets needed
 - **Any terminal plugin** — tmux handles this
 - **mini.nvim** — not adopted
+- **fzf-lua** — fzf may not be available on all machines; Telescope is sufficient
+- **oil.nvim** — overkill for the current daily workflow
 
 ## Plugin recommendations
 

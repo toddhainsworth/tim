@@ -36,13 +36,12 @@ return {
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
           end
 
-          map("gd",          vim.lsp.buf.definition,                         "Go to definition")
-          map("gD",          vim.lsp.buf.declaration,                        "Go to declaration")
-          map("gr",          vim.lsp.buf.references,                         "References")
-          map("gi",          vim.lsp.buf.implementation,                     "Go to implementation")
-          map("K",           vim.lsp.buf.hover,                              "Hover docs")
-          map("<leader>rn",  vim.lsp.buf.rename,                             "Rename symbol")
-          map("<leader>ca",  vim.lsp.buf.code_action,                        "Code action")
+          map("gd",          vim.lsp.buf.definition,                              "Go to definition")
+          map("gD",          vim.lsp.buf.declaration,                             "Go to declaration")
+          map("gr",          vim.lsp.buf.references,                              "References")
+          map("gi",          vim.lsp.buf.implementation,                          "Go to implementation")
+          map("<leader>rn",  vim.lsp.buf.rename,                                  "Rename symbol")
+          map("<leader>ca",  vim.lsp.buf.code_action,                             "Code action")
           map("<leader>lf",  function() vim.lsp.buf.format({ async = true }) end, "Format buffer")
         end,
       })
