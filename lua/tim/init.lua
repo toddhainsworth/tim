@@ -14,20 +14,12 @@ local function touch_state_file()
   if fd then fd:close() end
 end
 
-local function async_fetch(callback)
-  vim.system(
-    { "git", "-C", vim.fn.stdpath("config"), "fetch", "--tags", "--quiet" },
-    { text = true },
-    vim.schedule_wrap(callback)
-  )
-end
-
 local function check_for_update(notify_if_current)
   if notify_if_current then
     vim.notify("[tim] checking for updates...", vim.log.levels.INFO)
   end
   local git = require("tim.git")
-  async_fetch(function()
+  git.fetch(function()
     touch_state_file()
     local current = git.current_version()
     local latest = git.latest_version()
@@ -70,7 +62,7 @@ function M.run_update()
         vim.notify("[tim] update failed:\n" .. (result.stderr or ""), vim.log.levels.ERROR)
         return
       end
-      async_fetch(function()
+      git.fetch(function()
         local latest = git.latest_version()
         if not latest or latest == current then
           vim.notify("[tim] already up to date", vim.log.levels.INFO)

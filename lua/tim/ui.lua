@@ -216,18 +216,10 @@ local function render_view_only()
   apply_view_highlights(bufnr, view.highlights)
 end
 
-local function async_fetch(callback)
-  vim.system(
-    { "git", "-C", vim.fn.stdpath("config"), "fetch", "--tags", "--quiet" },
-    { text = true },
-    vim.schedule_wrap(callback)
-  )
-end
-
 local function load_tab_data(tab_id)
   local git = require("tim.git")
   if tab_id == "versions" and not state.data.versions then
-    async_fetch(function()
+    git.fetch(function()
       local current = git.current_version()
       state.data.current = state.data.current or current
       state.data.latest  = state.data.latest  or git.latest_version()
@@ -239,7 +231,7 @@ local function load_tab_data(tab_id)
       M.set_versions(versions)
     end)
   elseif tab_id == "changelog" and not state.data.sections then
-    async_fetch(function()
+    git.fetch(function()
       local sections = git.full_changelog()
       if #sections == 0 then
         vim.notify("[tim] no changelog available", vim.log.levels.WARN)

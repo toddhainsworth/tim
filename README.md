@@ -42,13 +42,13 @@ If you see `ENOENT` errors when nvim-treesitter installs parsers, the post-insta
 cd $(npm root -g)/tree-sitter-cli && node install.js
 ```
 
-Mason will auto-install the base LSP servers (`ts_ls`, `yamlls`, `marksman`) on first launch.
+Mason will auto-install the base LSP servers (`ts_ls`, `yamlls`, `marksman`, `jsonls`) on first launch.
 Machine-specific servers (e.g. `intelephense`) are loaded from `lua/config/servers_local.lua` — see [Machine-specific servers](#machine-specific-servers).
 Verify servers attached with `:LspInfo`.
 
 ## Machine-specific servers
 
-Base servers (`ts_ls`, `yamlls`, `marksman`) are defined in `lua/config/servers.lua` and installed on every machine.
+Base servers (`ts_ls`, `yamlls`, `marksman`, `jsonls`) are defined in `lua/config/servers.lua` and installed on every machine.
 
 To add servers for a specific machine, create `lua/config/servers_local.lua` (gitignored — not committed):
 
@@ -158,14 +158,13 @@ Leader key is `\`.
 | `K` | Hover docs |
 | `\rn` | Rename symbol |
 | `\ca` | Code action |
-| `\f` | Format buffer (manual) |
+| `\lf` | Format buffer (manual) |
 
 ### Files
 
 | Key | Action |
 |---|---|
 | `\\` | Find files (Telescope) |
-| `\ff` | Find files (Telescope) |
 | `\fg` | Live grep |
 | `\fb` | Buffers |
 | `\fr` | Recent files |
@@ -230,3 +229,4 @@ Leader key is `\`.
 | [nvim-autopairs](https://github.com/windwp/nvim-autopairs) | Auto bracket / quote closing |
 | [nvim-surround](https://github.com/kylechui/nvim-surround) | Surround operations (`ys`, `cs`, `ds`) |
 | [aerial.nvim](https://github.com/stevearc/aerial.nvim) | Symbol outline via Telescope |
+| [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) | In-buffer markdown rendering |

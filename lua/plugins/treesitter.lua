@@ -6,14 +6,18 @@ return {
     config = function()
       require("nvim-treesitter").install({
         "typescript",
+        "typescriptreact",
         "javascript",
+        "javascriptreact",
         "yaml",
         "markdown",
         "markdown_inline",
+        "lua",
+        "json",
       })
 
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact", "yaml", "markdown" },
+        pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact", "yaml", "markdown", "lua", "json" },
         callback = function()
           pcall(vim.treesitter.start)
         end,
