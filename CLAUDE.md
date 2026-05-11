@@ -7,10 +7,6 @@
 - Treesitter text objects are heavily used — don't remove or break them
 - No in-editor terminal — Todd uses tmux
 
-## Keybindings
-
-- Window navigation uses `<leader>w{q,s,w,e}` for left/down/up/right — this is intentional, not a mistake
-
 ## Do not suggest
 
 These were deliberately excluded:
@@ -27,8 +23,16 @@ These were deliberately excluded:
 
 Before recommending a third-party plugin, check whether NeoVim core already provides the functionality. Check the NeoVim changelog, runtime pack directory, and `neovim.io/doc` for built-in alternatives first.
 
-## Releases
+## Agent skills
 
-Releases are cut from `main` by manually triggering the GitHub Actions release workflow. There are no release branches — `main` is always the source of truth. The workflow tags `main` and creates a GitHub Release.
+### Issue tracker
 
-To trigger a release: `gh workflow run release.yml -f version=v1.2.0`
+Issues live in GitHub Issues for `toddhainsworth/tim`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default canonical labels (needs-triage, needs-info, ready-for-agent, ready-for-human, wontfix). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context repo — one `CONTEXT.md` at the repo root + `docs/adr/`. See `docs/agents/domain.md`.
