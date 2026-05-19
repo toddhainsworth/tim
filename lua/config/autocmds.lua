@@ -13,3 +13,13 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spelllang = "en_au"
   end,
 })
+
+-- Generate-commit-message keymap in commit buffers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "gitcommit", "NeogitCommitMessage" },
+  callback = function(ev)
+    vim.keymap.set("n", "<leader>gm", function()
+      require("tim.commit").generate()
+    end, { buffer = ev.buf, desc = "Generate commit message" })
+  end,
+})

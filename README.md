@@ -186,6 +186,7 @@ Leader key is `\`.
 | `\gs` | Stage hunk |
 | `\gu` | Undo stage hunk |
 | `\gx` | Reset hunk |
+| `\gm` | Generate commit message via local LLM (in `gitcommit` / Neogit commit buffer) |
 
 ### Editing
 
