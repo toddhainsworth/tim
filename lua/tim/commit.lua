@@ -65,7 +65,7 @@ function M.generate()
   vim.notify("Generating commit message...", vim.log.levels.INFO)
 
   vim.system(
-    { "ollama", "run", MODEL },
+    { "ollama", "run", "--nowordwrap", MODEL },
     { text = true, stdin = prompt },
     vim.schedule_wrap(function(result)
       if result.code ~= 0 then
@@ -76,7 +76,10 @@ function M.generate()
         return
       end
 
-      local message = vim.trim(result.stdout or "")
+      local raw = result.stdout or ""
+      -- Strip ANSI CSI escape sequences (defensive — ollama may still emit some)
+      local stripped = raw:gsub("\27%[[%d;?]*[a-zA-Z]", "")
+      local message = vim.trim(stripped)
       if message == "" then
         vim.notify("Empty response from model", vim.log.levels.WARN)
         return
