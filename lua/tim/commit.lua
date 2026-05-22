@@ -1,7 +1,7 @@
 local M = {}
 
 local MODEL = "qwen2.5-coder:7b"
-local JIRA_PATTERN = "([A-Z]+%-%d+)"
+local JIRA_PATTERN = "([A-Z][A-Z0-9]+%-%d+)"
 local GH_PATTERNS = {
   "^[^/]+/(%d+)[_%-]",
   "^[^/]+/(%d+)$",
