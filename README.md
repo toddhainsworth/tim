@@ -43,20 +43,41 @@ cd $(npm root -g)/tree-sitter-cli && node install.js
 ```
 
 Mason will auto-install the base LSP servers (`ts_ls`, `yamlls`, `marksman`, `jsonls`) on first launch.
-Machine-specific servers (e.g. `intelephense`) are loaded from `lua/config/servers_local.lua` — see [Machine-specific servers](#machine-specific-servers).
+Machine-specific servers (e.g. `intelephense`) are loaded from `lua/config/servers_local.lua` — see [Machine-specific config](#machine-specific-config).
 Verify servers attached with `:LspInfo`.
 
-## Machine-specific servers
+## Machine-specific config
 
-Base servers (`ts_ls`, `yamlls`, `marksman`, `jsonls`) are defined in `lua/config/servers.lua` and installed on every machine.
+Three gitignored hooks extend the committed base per machine — useful for languages you only work with on one laptop (e.g. Svelte). Each is loaded only when the file exists, so the base config is unaffected when they're absent.
 
-To add servers for a specific machine, create `lua/config/servers_local.lua` (gitignored — not committed):
+### LSP servers
+
+Base servers (`ts_ls`, `yamlls`, `marksman`, `jsonls`) are defined in `lua/config/servers.lua` and installed on every machine. To add servers for one machine, create `lua/config/servers_local.lua`:
 
 ```lua
 return { "intelephense" }
 ```
 
-Mason will merge this list with the base on next startup. If the file is absent the base servers are used as-is. To add `intelephense` on the work laptop, create that file with the content above and restart Neovim.
+Mason merges this list with the base on next startup.
+
+### Treesitter parsers
+
+Base parsers are defined in `lua/plugins/treesitter.lua`. To add parsers and enable highlighting for extra filetypes on one machine, create `lua/config/treesitter_local.lua`:
+
+```lua
+return {
+  parsers = { "svelte", "css" },
+  filetypes = { "svelte", "css" },
+}
+```
+
+`parsers` are installed via nvim-treesitter; `filetypes` get treesitter highlighting enabled on `FileType`.
+
+### Plugins
+
+Drop lazy.nvim spec files into `lua/plugins_local/` (the directory is tracked but its `*.lua` files are gitignored). They load exactly like `lua/plugins/`, but only on this machine. The directory is imported only when it contains at least one `.lua` file. Svelte/SvelteKit needs no plugin — LSP plus the treesitter parser cover it — so this is reserved for future per-machine additions.
+
+After creating any of these, restart Neovim. Mason and nvim-treesitter install anything new on startup; trigger manually with `:MasonInstall <server>` and `:TSInstall <parser>` if needed.
 
 ## Update management
 
