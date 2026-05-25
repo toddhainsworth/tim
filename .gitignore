@@ -1,2 +1,4 @@
 .claude/
 lua/config/servers_local.lua
+lua/config/treesitter_local.lua
+lua/plugins_local/*.lua

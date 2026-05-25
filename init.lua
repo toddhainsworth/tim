@@ -25,7 +25,13 @@ require("config.options")
 require("config.keymaps")
 require("config.autocmds")
 
-require("lazy").setup("plugins", {
+-- Machine-local plugin specs (gitignored), only imported when present
+local specs = { { import = "plugins" } }
+if vim.fn.glob(vim.fn.stdpath("config") .. "/lua/plugins_local/*.lua") ~= "" then
+  table.insert(specs, { import = "plugins_local" })
+end
+
+require("lazy").setup(specs, {
   change_detection = { notify = false },
 })
 
